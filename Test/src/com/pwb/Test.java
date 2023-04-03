@@ -1,5 +1,9 @@
 package com.pwb;
 
-public class Test { 
+public class Test{ 
  
+	private void syso() {
+		// TODO Auto-generated method stub
+
+	}
 }
