@@ -1,0 +1,32 @@
+
+signin page ...unsecured by permitall
+username, name, password, role..  signin done by jap data save in user table with password encoded. by postman..
+
+
+want to see his details , secured by security...(1st login page will open) role --TM
+want se see all user dtls , secured by security...(1st login page will open) role --ADMIN
+
+
+
+
+
+
+http://localhost:8085/springSecurity/user/getuser/DebjyotiR
+{
+"username":"SoumendraS",
+"name":"Soumendra Saha",
+"password":"Pass@321",
+"role":"ROLE_TM"
+
+}
+
+
+
+http://localhost:8085/springSecurity/user/getalluser
+{
+"username":"DebjyotiR",
+"name":"Debjyoti Roychoudhury",
+"password":"Pass@123",
+"role":"ROLE_ADMIN"
+
+}
