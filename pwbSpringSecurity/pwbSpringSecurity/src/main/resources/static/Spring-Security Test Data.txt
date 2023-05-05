@@ -7,7 +7,15 @@ want to see his details , secured by security...(1st login page will open) role 
 want se see all user dtls , secured by security...(1st login page will open) role --ADMIN
 
 
+add user
+http://localhost:8085/springSecurity/signin/usersignin
+{
+"username":"BuddhaB",
+"name":"Buddha Ghosh",
+"password":"Pass@321",
+"role":"ROLE_TM"
 
+}
 
 
 
