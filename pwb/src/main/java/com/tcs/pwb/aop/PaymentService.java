@@ -2,6 +2,6 @@ package com.tcs.pwb.aop;
 
 public interface PaymentService {
 	
-	public void makepayment();
+	public String makepayment(String data);
 
 }

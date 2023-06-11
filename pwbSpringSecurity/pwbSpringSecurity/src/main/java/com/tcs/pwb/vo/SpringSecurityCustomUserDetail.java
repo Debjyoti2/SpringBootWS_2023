@@ -14,7 +14,7 @@ public class SpringSecurityCustomUserDetail implements UserDetails{
 	
 	private User user;
 	
-	public SpringSecurityCustomUserDetail(User user){
+	public SpringSecurityCustomUserDetail(User user){ 
 		this.user=user;
 	}
 

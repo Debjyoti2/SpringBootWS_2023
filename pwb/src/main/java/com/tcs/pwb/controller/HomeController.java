@@ -1,6 +1,8 @@
 package com.tcs.pwb.controller;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tcs.pwb.aop.PaymentServiceImpl;
@@ -9,16 +11,17 @@ import com.tcs.pwb.aop.PaymentServiceImpl;
 @RequestMapping("/home")
 public class HomeController {
 	
-	@RequestMapping("/hello")
+	@GetMapping("/hello")
 	public String sayHi() {
 		return "say hi22";
 		
 	}
 	
-	@RequestMapping("/makepayment")
-	public void makePayment() {                                                                                                                                                
+	@GetMapping("/makepayment")
+	public String makePayment(@RequestParam("name") String data) {                                                                                                                                                
 		PaymentServiceImpl service = new PaymentServiceImpl();
-		service.makepayment();
+		String outstr = service.makepayment(data);
+		return outstr;
 	}
 
 }

@@ -11,14 +11,28 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
+	
+	public static final String[] SWAGGER_URL_STRINGS= {
+			"/api/v1/auth/**",
+			"/v3/api-docs/**",
+			"/v2/api-docs/**",
+			"/swagger-resources/**",
+			"/swagger-ui/**",
+			"/webjars/**"
+			
+	};
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
 		.antMatchers("/login").permitAll()
-		.antMatchers("/home/**").hasRole("TM")
-		.antMatchers("/getemp","/findbyname").hasRole("ADMIN")
+		.antMatchers("/getemp").permitAll()
+		.antMatchers("/user/saveuser").permitAll()
+		.antMatchers("/actuator/**").permitAll()
+		.antMatchers(SWAGGER_URL_STRINGS).permitAll() 
+		.antMatchers("/home/**").permitAll()
+		.antMatchers("/findbyname").hasRole("ADMIN")
 		.anyRequest()
 		.authenticated()
 		.and()

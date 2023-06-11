@@ -1,9 +1,12 @@
 package com.tcs.pwb.aop;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class PaymentServiceImpl implements PaymentService{
 
 	@Override
-	public void makepayment() {
+	public String makepayment(String data) {
 
 		System.out.println("Amount debited from account 1");
 		
@@ -12,6 +15,7 @@ public class PaymentServiceImpl implements PaymentService{
 		
 		System.out.println("Amount credited  to account 2");
 		
+		return "output str";
 	}
 
 }
