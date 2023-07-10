@@ -27,8 +27,8 @@ public class Passport {
 	
 	//one to one mapping (bi-directional)
 	
-//	@OneToOne(fetch = FetchType.EAGER,mappedBy = "passport")
-//	private Student student;
+	@OneToOne(fetch = FetchType.EAGER,mappedBy = "passport")
+	private Student student;
 
 	public Passport(String passportName) {
 		super();

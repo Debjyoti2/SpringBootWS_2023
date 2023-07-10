@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pwb.demo.exception.NoAccessToEmpFetchException;
 import com.pwb.demo.service.EmployeeService;
 import com.pwb.demo.vo.Employee;
 
@@ -43,6 +44,25 @@ public class EmployeeController {
 		logger.warn("Hey, This is a warning! getemp");
 		logger.error("Oops! We have an Error. OK getemp");
 		logger.fatal("Damn! Fatal error. Please fix me. getemp");
+		
+		int id=5;
+		
+		if(id==1) {
+			throw new NullPointerException();
+		}
+		if(id==2) {
+			throw new NoAccessToEmpFetchException();
+		}
+	      
+		List<Employee> empList =  service.getemp();
+		if(empList.size()<1) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(empList);
+	}
+	
+	@RequestMapping("/getallemp")
+	public ResponseEntity<List<Employee>> getallemp(){
 	      
 		List<Employee> empList =  service.getemp();
 		if(empList.size()<1) {

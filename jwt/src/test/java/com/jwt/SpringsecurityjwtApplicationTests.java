@@ -1,15 +1,11 @@
-package com.pwb.demo;
+package com.jwt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProjectbystsApplicationTests {
+class SpringsecurityjwtApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-	
 	
 
 }

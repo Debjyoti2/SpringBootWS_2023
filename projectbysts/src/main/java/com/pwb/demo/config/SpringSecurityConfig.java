@@ -30,6 +30,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/getemp").permitAll()
 		.antMatchers("/user/saveuser").permitAll()
 		.antMatchers("/actuator/**").permitAll()
+		.antMatchers("/registerAccount/**").permitAll()
+		.antMatchers("/getallemp").permitAll() 
 		.antMatchers(SWAGGER_URL_STRINGS).permitAll() 
 		.antMatchers("/home/**").permitAll()
 		.antMatchers("/findbyname").hasRole("ADMIN")

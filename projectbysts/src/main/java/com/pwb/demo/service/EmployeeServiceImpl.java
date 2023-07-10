@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.pwb.demo.dao.EmployeeRepo;
+import com.pwb.demo.exception.NoAccessToEmpFetchException;
 import com.pwb.demo.vo.Employee;
 
 @Service
@@ -26,6 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 		List<Employee> empList = new ArrayList<>();
 		empList=(List<Employee>) dao.findAll();
 		return empList;
+		//throw new NoAccessToEmpFetchException();
 	}
 	
 	

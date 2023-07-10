@@ -1,0 +1,21 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    username: sys as sysdba
+    driver-class-name: oracle.jdbc.OracleDriver
+    password: oracle
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dilect: org.hibernate.dialect.Oracle12cDialect
+       
+logging:
+  file:
+    name: E:/CentralLogging/jwtapp.log
+  
+
+      
