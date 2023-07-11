@@ -22,12 +22,6 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	@Transactional
 	public Student registerStudent(Student student) {
-		
-		Passport passport = new Passport("E24711");
-	    
-		//student is owning side of relationship.. so add passport in course.. so that passportid get tagged with course 
-	    student.setPassport(passport);
-	    
 	    studentdao.save(student);
 	    return student;
 	}

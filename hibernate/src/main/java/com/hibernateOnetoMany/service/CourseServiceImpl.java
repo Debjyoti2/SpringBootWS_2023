@@ -3,12 +3,12 @@ package com.hibernateOnetoMany.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hibernateOnetoMany.dao.CourseRepo;
 import com.hibernateOnetoMany.entity.Course;
@@ -28,8 +28,6 @@ public class CourseServiceImpl implements CourseService{
 	@Transactional
 	public Course saveCourse(Course course) {
 		
-		dao.save(course);
-		
 		
 		Review r1= new Review("Good",4);
 		Review r2= new Review("Bad",2);
@@ -46,6 +44,8 @@ public class CourseServiceImpl implements CourseService{
 		reviewsList.add(r3);
 		
 		course.setReviews(reviewsList);
+		
+		dao.save(course);
 		
 		
 		return course;

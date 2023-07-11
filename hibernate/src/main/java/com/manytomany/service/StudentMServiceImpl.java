@@ -1,9 +1,9 @@
 package com.manytomany.service;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.manytomany.dao.CourseMRepo;
 import com.manytomany.dao.StudentMRepo;
@@ -25,11 +25,11 @@ public class StudentMServiceImpl implements StudentMService{
 		 CourseM course = new CourseM();
 		 course.setCourseName("Java 1.8");
 		 
-		 dao.save(student);
-		 courseRepo.save(course);
-		 
 		 student.addCourse(course);
 		 course.addStudent(student);
+		 
+		 dao.save(student);
+		 courseRepo.save(course);
 		 
 		 
 		 return student;
