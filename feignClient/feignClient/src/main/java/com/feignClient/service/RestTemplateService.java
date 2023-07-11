@@ -24,5 +24,12 @@ public class RestTemplateService {
 		return restTemplate.getForObject(URL,Users.class);
 	}
 	
-
+	
+	//types
+	
+	// getForObject(url, classType)
+	// getForEntity(url, responseType)
+	
+	// postForObject(url, request, classType) 
+	
 }

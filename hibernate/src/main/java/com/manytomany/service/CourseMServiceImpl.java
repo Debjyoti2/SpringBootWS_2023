@@ -1,5 +1,7 @@
 package com.manytomany.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +28,20 @@ public class CourseMServiceImpl implements CourseMService{
 		StudentM student = new StudentM();
 		student.setStudentName("Kittu");
 		
-		dao.save(course);
-		studentMRepo.save(student);
-		
 		course.addStudent(student);
 		student.addCourse(course);
 		
+		dao.save(course);
+		studentMRepo.save(student);
+		
 		return course;
 		
+	}
+	
+	@Override
+	public List<CourseM> getallCourse() {
+		
+		return (List<CourseM>) dao.findAll();
 	}
 
 }

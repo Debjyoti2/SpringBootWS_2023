@@ -14,7 +14,7 @@ public interface EmployeeRepo extends CrudRepository<Employee, Integer>{
 	public List<Employee> findByName(String name);
 	
 	
-	//custom methods using native query
+	//custom methods using native query with named param
 	@Query(value = "select * from Employee s where s.name=:name",nativeQuery = true)
 	public List<Employee> getempfiltername(@Param("name") String name);
 	

@@ -3,12 +3,14 @@ package com.hibernateOnetoMany.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
+import javax.persistence.EntityManager;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hibernateOnetoMany.dao.CourseRepo;
 import com.hibernateOnetoMany.entity.Course;
@@ -22,13 +24,14 @@ public class CourseServiceImpl implements CourseService{
 	@Autowired
 	private CourseRepo dao;
 	
+	@Autowired
+	private EntityManager em;
+	
 	 private static final Logger LOG = LogManager.getLogger(CourseServiceImpl.class);
 	
 	@Override
 	@Transactional
 	public Course saveCourse(Course course) {
-		
-		dao.save(course);
 		
 		
 		Review r1= new Review("Good",4);
@@ -47,16 +50,36 @@ public class CourseServiceImpl implements CourseService{
 		
 		course.setReviews(reviewsList);
 		
+		dao.save(course);
+		
 		
 		return course;
 	}
 	
+	
+	//1st level of cache testing 
 	@Override
+	@Transactional
 	public Course getCouseById(Long courseId) {
 	
 		Course courseRet = dao.findById(courseId).orElse(new Course());
+		System.out.println(courseRet.getCourseName());
 		
-		LOG.info("courseRet :::  " + courseRet);
+		dao.findById(courseId).orElse(new Course());
+		
+		Session session= em.unwrap(Session.class);
+		session.evict(courseRet);
+		
+		dao.findById(courseId).orElse(new Course());
+		
+		
+		//find if any record exists or not.
+		//boolean existsFlag = dao.existsById(courseId);
+		
+		//count of rows in the table
+		//long totalrowcount = dao.count();
+		
+		
 		return courseRet;
 	}
 
