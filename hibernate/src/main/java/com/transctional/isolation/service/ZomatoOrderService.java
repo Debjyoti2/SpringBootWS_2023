@@ -52,7 +52,7 @@ public class ZomatoOrderService {
                                and 2nd method will always run without a transction. and once 2nd method executed its again resumed the 1st method 
                                transction which was suspended.
   
-   Propagation.NEVER= its never create a transction. jodi 1st method theke call hoy and sei method er transction thake,
+    Propagation.NEVER= its never create a transction. jodi 1st method theke call hoy and sei method er transction thake,
                       then exception throw kore dbe. 
   
 	 */
