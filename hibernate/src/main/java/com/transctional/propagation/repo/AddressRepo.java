@@ -1,8 +1,8 @@
-package com.transctional.isolation.repo;
+package com.transctional.propagation.repo;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import com.transctional.isolation.entities.Address;
+import com.transctional.propagation.entities.Address;
 
 public interface AddressRepo extends PagingAndSortingRepository<Address,Long> {
 

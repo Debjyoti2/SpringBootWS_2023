@@ -1,4 +1,4 @@
-package com.transctional.isolation.entities;
+package com.transctional.propagation.entities;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package com.transctional.isolation.controller;
+package com.transctional.propagation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.transctional.isolation.entities.Customer;
-import com.transctional.isolation.exceptions.InvalidAddressException;
-import com.transctional.isolation.service.ZomatoOrderService;
-import com.transctional.isolation.util.model.OrderInputObject;
-import com.transctional.isolation.util.model.ResponseObject;
+import com.transctional.propagation.entities.Customer;
+import com.transctional.propagation.exceptions.InvalidAddressException;
+import com.transctional.propagation.service.ZomatoOrderService;
+import com.transctional.propagation.util.model.OrderInputObject;
+import com.transctional.propagation.util.model.ResponseObject;
 
 @RestController
 public class ZomatoOrderController {

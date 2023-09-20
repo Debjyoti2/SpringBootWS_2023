@@ -1,10 +1,10 @@
-package com.transctional.isolation.util.model;
+package com.transctional.propagation.util.model;
 
 import java.util.ArrayList;
 
-import com.transctional.isolation.entities.Address;
-import com.transctional.isolation.entities.Customer;
-import com.transctional.isolation.entities.Order;
+import com.transctional.propagation.entities.Address;
+import com.transctional.propagation.entities.Customer;
+import com.transctional.propagation.entities.Order;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.transctional.isolation.util.model;
+package com.transctional.propagation.util.model;
 
 import lombok.Getter;
 import lombok.Setter;

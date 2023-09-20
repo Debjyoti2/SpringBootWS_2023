@@ -1,4 +1,4 @@
-package com.transctional.isolation.exceptions;
+package com.transctional.propagation.exceptions;
 
 public class InvalidAddressException extends Exception{
 	
