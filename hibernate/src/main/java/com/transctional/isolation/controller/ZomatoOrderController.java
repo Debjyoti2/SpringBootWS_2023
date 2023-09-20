@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.transctional.isolation.entities.Customer;
+import com.transctional.isolation.exceptions.InvalidAddressException;
 import com.transctional.isolation.service.ZomatoOrderService;
 import com.transctional.isolation.util.model.OrderInputObject;
 import com.transctional.isolation.util.model.ResponseObject;
@@ -20,7 +21,7 @@ public class ZomatoOrderController {
 	
 	
 	@PostMapping("/doorder")
-	public ResponseEntity<ResponseObject> doOrder (@RequestBody OrderInputObject orderObject){
+	public ResponseEntity<ResponseObject> doOrder (@RequestBody OrderInputObject orderObject) throws InvalidAddressException{
 		
 		Customer customer = zomatoOrderService.doOrder(orderObject);
 		ResponseObject responseObject =new ResponseObject();

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.transctional.isolation.entities.Address;
 import com.transctional.isolation.entities.Customer;
 import com.transctional.isolation.entities.Order;
+import com.transctional.isolation.exceptions.InvalidAddressException;
 import com.transctional.isolation.repo.AddressRepo;
 import com.transctional.isolation.repo.CustomerRepo;
 import com.transctional.isolation.repo.OrderRepo;
@@ -57,11 +58,14 @@ public class ZomatoOrderService {
   
 	 */
 	
+	// If we raise any unchecked exception then transction automatically rollback the commit.
+	// but for checked exception we need to mention it , rollbackFor/ noRollbackfor
 	
 	
-	
-	@Transactional(noRollbackFor  = NullPointerException.class)
-	public Customer doOrder(OrderInputObject orderInputObject) {
+	//@Transactional(noRollbackFor  = InvalidAddressException.class)
+	//@Transactional(rollbackFor = InvalidAddressException.class)
+	@Transactional(propagation = Propagation.REQUIRED,noRollbackFor = InvalidAddressException.class)
+	public Customer doOrder(OrderInputObject orderInputObject) throws InvalidAddressException {
 		
 		Customer customer = saveCustomerDetails(orderInputObject.getCustomer());
 		
@@ -80,24 +84,21 @@ public class ZomatoOrderService {
 		return customerRepo.save(customer);
 	}
 	
-	//@Transactional(propagation = Propagation.REQUIRES_NEW)                
-	public ArrayList<Address> saveAddress(ArrayList<Address> address){
+	@Transactional(propagation = Propagation.REQUIRED,rollbackFor  = InvalidAddressException.class)                
+	public ArrayList<Address> saveAddress(ArrayList<Address> address) throws InvalidAddressException{
 		ArrayList<Address> savedAddressList = new ArrayList<>();
-		try{
-			int i = 2;
-			int j = i/0;
-			addressRepo.saveAll(address).forEach(e->savedAddressList.add(e));
-		}
-		catch (Exception e) {
-			throw new NullPointerException();
-		}
 		
+		addressRepo.saveAll(address).forEach(e->savedAddressList.add(e));
 		
 		return savedAddressList;
 	}
 	
-    public ArrayList<Order> saveOrders(ArrayList<Order> orders){
+	@Transactional(propagation = Propagation.REQUIRED)
+    public ArrayList<Order> saveOrders(ArrayList<Order> orders) throws InvalidAddressException{
 		ArrayList<Order> savedOrderList = new ArrayList<>();
+		if(true) {
+			throw new InvalidAddressException("Invalid Address !!!");
+		}
 		orderRepo.saveAll(orders).forEach(e->savedOrderList.add(e));
 		return savedOrderList;
 	}
